@@ -2,7 +2,7 @@
 # OPX configuration #
 #####################
 IF = 10e6
-LO = 5e9
+LO = 8.8e9
 con = "con1"
 octave = "oct1"
 qop_ip = "10.4.1.2"
