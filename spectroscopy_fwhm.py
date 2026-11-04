@@ -55,7 +55,9 @@ def analyze(path):
     fig.savefig(path.with_name(path.stem + "_fwhm.png"), dpi=150)
 
 
-files = [Path(p) for p in sys.argv[1:]] or sorted(DATA_DIR.glob("Resonator_Spectroscopy_*.npz"))
+# the _vs_Flux / _vs_Power files are 2D maps, not single 1D sweeps, so skip them
+files = [Path(p) for p in sys.argv[1:]] or sorted(
+    p for p in DATA_DIR.glob("Resonator_Spectroscopy_*.npz") if "_vs_" not in p.name)
 if not files:
     sys.exit(f"No spectroscopy npz files found in {DATA_DIR}")
 for f in files:
